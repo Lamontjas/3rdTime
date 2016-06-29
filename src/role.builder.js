@@ -39,14 +39,14 @@ var roleBuilder = {
         {
             var source = creep.room.find(FIND_SOURCES);
             if (creep.memory.source==0) {
-                if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE ) {
-                    creep.moveTo(sources[0]);
+                if (creep.harvest(source[0]) == ERR_NOT_IN_RANGE ) {
+                    creep.moveTo(source[0]);
                 }
             }
             else if (creep.memory.source==1)
             {
-                if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE ) {
-                    creep.moveTo(sources[1]);
+                if (creep.harvest(source[1]) == ERR_NOT_IN_RANGE ) {
+                    creep.moveTo(source[1]);
                 }
             }
         }
