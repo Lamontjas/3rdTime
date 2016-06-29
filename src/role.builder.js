@@ -2,13 +2,27 @@ var roleBuilder = {
 
     run: function (creep)
     {
+
+        var newCreep = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
         if (creep.memory.building && creep.carry.energy==0)
         {
             creep.memory.building=false;
+            if(Creep.memory.source!=0||creep.memory.source!=1)
+            {
+                if (newCreep.length>=4)
+                {
+                    creep.memory.source=1;
+                }
+                else
+                {
+                    creep.memory.source=0;
+                }
+            }
         }
         if (creep.memory.building ==false&& creep.carry.energy==creep.carryCapacity)
         {
             creep.memory.building=true;
+            creep.memory.source=-1;
         }
 
         if (creep.memory.building==true)
@@ -23,16 +37,22 @@ var roleBuilder = {
         }
         else
         {
-            var source = creep.pos.findClosestByPath(FIND_SOURCES);
-            if(creep.harvest(source)==ERR_NOT_IN_RANGE)
+            var source = creep.room.find(FIND_SOURCES);
+            if (creep.memory.source==0) {
+                if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE ) {
+                    creep.moveTo(sources[0]);
+                }
+            }
+            else if (creep.memory.source==1)
             {
-                creep.moveTo(source);
-
+                if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE ) {
+                    creep.moveTo(sources[1]);
+                }
             }
         }
     }
 
-//askdjahsd
+
 
 };
 module.exports = roleBuilder;

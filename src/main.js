@@ -70,15 +70,16 @@ module.exports.loop = function () {
         else {
             Game.spawns.Spawn1.createCreep([WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
                 role: 'builder',
-                building: false
+                building: false,
+                source:1
             })
         }
     }
 
     if((numberOfHarvesters<minimumHarvesters))
     {
-       Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'harvester'})
+       Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'harvester',source:0})
    }
 
-}
+};
 
