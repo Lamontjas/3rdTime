@@ -7,7 +7,7 @@ var roleBuilder = {
         if (creep.memory.building && creep.carry.energy==0)
         {
             creep.memory.building=false;
-            if(Creep.memory.source==-1)
+            if(creep.memory.source==-1)
             {
                 if (newCreep.length>=4)
                 {
