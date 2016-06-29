@@ -9,7 +9,7 @@ var roleUpgrader = {
            creep.memory.upgrading = false;
            if (creep.memory.source!=0||creep.memory.source!=1)
            {
-               if (newCreep.length>4)
+               if (newCreep.length>=4)
                {
                    creep.memory.source=1;
                }
