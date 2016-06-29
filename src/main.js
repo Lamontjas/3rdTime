@@ -41,11 +41,11 @@ module.exports.loop = function () {
 
     if (numberOfUpgraders<3)
     {
-        var newUpgrader = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false})
+        var newUpgrader = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
     }
     if (numberOfBuilders<3)
     {
-        var newUpgrader = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'builder',building:false})
+        var newBuilder = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'builder',building:false})
     }
 
     if((numberOfHarvesters<minimumHarvesters))
