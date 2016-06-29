@@ -2,14 +2,14 @@ var roleUpgrader = {
 
     run: function (creep)
     {
-        var newCreep = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
-
+        var creepsAtA = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
+        var creepsAtB = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,44,23,46,25,true);
        if (creep.memory.upgrading==true && creep.carry.energy==0)
        {
            creep.memory.upgrading = false;
            if (creep.memory.source== -1)
            {
-               if (newCreep.length>=4)
+               if (creepsAtA>creepsAtB)
                {
                    creep.memory.source=1;
                }
@@ -24,6 +24,11 @@ var roleUpgrader = {
         {
             creep.memory.upgrading = true;
             creep.memory.source=-1;
+        }
+
+        if (creep.memory.upgrading==false&&creep.memory.source==-1)
+        {
+            creep.memory.upgrading=true;
         }
 
         if(creep.memory.upgrading){

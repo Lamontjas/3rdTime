@@ -2,6 +2,11 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+
+
+        var creepsAtA = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
+        var creepsAtB = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,44,23,46,25,true);
+        
         if(creep.carry.energy < creep.carryCapacity) {
             var sources = creep.room.find(FIND_SOURCES);
           

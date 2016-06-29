@@ -88,7 +88,22 @@ module.exports.loop = function () {
 
     if((numberOfHarvesters<minimumHarvesters))
     {
-       Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'harvester',source:0})
+        if (Game.spawns.Spawn1.room.energyAvailable>=500)
+        {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, CARRY,CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: 0})
+        }
+        else if (Game.spawns.Spawn1.room.energyAvailable>=450)
+        {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: 0})
+        }
+        else if (Game.spawns.Spawn1.room.energyAvailable>=400)
+        {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: 0})
+        }
+        else
+        {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: 0})
+        }
    }
 
 };
