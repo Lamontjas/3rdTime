@@ -39,7 +39,7 @@ module.exports.loop = function () {
     var numberOfUpgraders= _.sum(Game.creeps, (c) => c.memory.role == 'upgrader');
     var numberOfBuilders= _.sum(Game.creeps, (c) => c.memory.role == 'builder');
 
-    if (numberOfUpgraders<3)
+    if (numberOfUpgraders<4)
     {
         if (Game.spawns.Spawn1.energy==450)
         {
@@ -62,7 +62,7 @@ module.exports.loop = function () {
             })
         }
     }
-    if (numberOfBuilders<3)
+    if (numberOfBuilders<4)
     {
         if (Game.spawns.Spawn1.energy==450)
         {
