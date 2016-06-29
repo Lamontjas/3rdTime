@@ -41,16 +41,43 @@ module.exports.loop = function () {
 
     if (numberOfUpgraders<3)
     {
-        var newUpgrader = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
+        if (Game.spawns.Spawn1.energy==450)
+        {
+            Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
+        }
+        else if (Game.spawns.Spawn1.energy==400)
+        {
+            Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
+        }
+        else {
+            Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE, MOVE], undefined, {
+                role: 'upgrader',
+                upgrading: false,
+                source: 1
+            })
+        }
     }
     if (numberOfBuilders<3)
     {
-        var newBuilder = Game.spawns.Spawn1.createCreep([WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'builder',building:false})
+        if (Game.spawns.Spawn1.energy==450)
+        {
+            Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
+        }
+        else if (Game.spawns.Spawn1.energy==400)
+        {
+            Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
+        }
+        else {
+            Game.spawns.Spawn1.createCreep([WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
+                role: 'builder',
+                building: false
+            })
+        }
     }
 
     if((numberOfHarvesters<minimumHarvesters))
     {
-       Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE],undefined,{role:'harvester'})
+       Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'harvester'})
    }
 
 }
