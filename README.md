@@ -1,2 +1,1 @@
-# 3rdTime
-screeps stuff
+Code goes in /src
