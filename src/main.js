@@ -29,8 +29,8 @@ module.exports.loop = function () {
 
     }
 
-    var newCreep = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
-    console.log(newCreep.length);
+   // var newCreep = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
+   // console.log(newCreep.length);
 
 
 
@@ -49,6 +49,11 @@ module.exports.loop = function () {
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
         }
+        else if (Game.spawns.Spawn1.energy==350)
+        {
+            Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
+        }
+
         else {
             Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE, MOVE], undefined, {
                 role: 'upgrader',
@@ -66,6 +71,10 @@ module.exports.loop = function () {
         else if (Game.spawns.Spawn1.energy==400)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
+        }
+        else if (Game.spawns.Spawn1.energy==350)
+        {
+            Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
         }
         else {
             Game.spawns.Spawn1.createCreep([WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
