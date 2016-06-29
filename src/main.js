@@ -41,20 +41,20 @@ module.exports.loop = function () {
 
     if (numberOfUpgraders<4)
     {
-        if (Game.spawns.Spawn1.energy==450)
+        if (Game.spawns.Spawn1.energy>=450)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
         }
-        else if (Game.spawns.Spawn1.energy==400)
+        else if (Game.spawns.Spawn1.energy>=400)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
         }
-        else if (Game.spawns.Spawn1.energy==350)
+        else if (Game.spawns.Spawn1.energy>=350)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'upgrader',upgrading: false, source:1})
         }
 
-        else {
+        else{
             Game.spawns.Spawn1.createCreep([WORK, CARRY, MOVE, MOVE, MOVE], undefined, {
                 role: 'upgrader',
                 upgrading: false,
@@ -64,15 +64,15 @@ module.exports.loop = function () {
     }
     if (numberOfBuilders<4)
     {
-        if (Game.spawns.Spawn1.energy==450)
+        if (Game.spawns.Spawn1.energy>=450)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
         }
-        else if (Game.spawns.Spawn1.energy==400)
+        else if (Game.spawns.Spawn1.energy>=400)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
         }
-        else if (Game.spawns.Spawn1.energy==350)
+        else if (Game.spawns.Spawn1.energy>=350)
         {
             Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE,MOVE],undefined,{role:'builder',building: false, source:1})
         }
