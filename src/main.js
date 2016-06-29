@@ -50,7 +50,7 @@ module.exports.loop = function () {
 
     if((numberOfHarvesters<minimumHarvesters))
     {
-       var name =  Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE],undefined,{role:'harvester'})
+       Game.spawns.Spawn1.createCreep([WORK,WORK,CARRY,MOVE],undefined,{role:'harvester'})
    }
 
 }
