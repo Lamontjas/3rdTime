@@ -2,8 +2,23 @@ var roleUpgrader = {
 
     run: function (creep)
     {
-        var creepsAtA = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
-        var creepsAtB = Game.rooms.E38N3.lookForAtArea(LOOK_CREEPS,44,23,46,25,true);
+
+        var srcs = creep.room.find(FIND_SOURCES_ACTIVE);
+        if(srcs.length>0) {
+            var sourcePosX = srcs[0].pos.x;
+            var sourcePosY = srcs[0].pos.y;
+            if (srcs.length>1)
+            {
+                var sourceBPosX=srcs[1].pos.x;
+                var sourceBPosY=srcs[1].pos.y;
+            }
+
+        }
+
+        //var creepsAtA =creep.room.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
+        var creepsAtA =creep.room.lookForAtArea(LOOK_CREEPS,sourcePosY-1,sourcePosX-1,sourcePosY+1,sourcePosX+1,true);
+        //var creepsAtB = creep.room.lookForAtArea(LOOK_CREEPS,44,23,46,25,true);
+        var creepsAtB =creep.room.lookForAtArea(LOOK_CREEPS,sourceBPosY-1,sourceBPosX-1,sourceBPosY+1,sourceBPosX+1,true);
        if (creep.memory.upgrading==true && creep.carry.energy==0)
        {
            creep.memory.upgrading = false;
