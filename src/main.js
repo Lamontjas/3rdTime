@@ -37,7 +37,32 @@ module.exports.loop = function () {
     var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == 'harvester');
     var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader');
     var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder');
+    var numberOfRepirers = _.sum(Game.creeps, (c) => c.memory.role == 'repairer');
 
+
+    if ((numberOfHarvesters < minimumHarvesters)) {
+        if (Game.spawns.Spawn1.room.energyAvailable >= 500) {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
+                role: 'harvester',
+                source: 0
+            })
+        }
+        else if (Game.spawns.Spawn1.room.energyAvailable >= 450) {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE], undefined, {
+                role: 'harvester',
+                source: 0
+            })
+        }
+        else if (Game.spawns.Spawn1.room.energyAvailable >= 400) {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
+                role: 'harvester',
+                source: 0
+            })
+        }
+        else {
+            Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: 0})
+        }
+    }
     if (numberOfUpgraders < 4) {
         if (Game.spawns.Spawn1.room.energyAvailable >= 450) {
             Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE], undefined, {
@@ -99,29 +124,9 @@ module.exports.loop = function () {
             })
         }
     }
-
-    if ((numberOfHarvesters < minimumHarvesters)) {
-        if (Game.spawns.Spawn1.room.energyAvailable >= 500) {
-            Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
-                role: 'harvester',
-                source: 0
-            })
-        }
-        else if (Game.spawns.Spawn1.room.energyAvailable >= 450) {
-            Game.spawns.Spawn1.createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE], undefined, {
-                role: 'harvester',
-                source: 0
-            })
-        }
-        else if (Game.spawns.Spawn1.room.energyAvailable >= 400) {
-            Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {
-                role: 'harvester',
-                source: 0
-            })
-        }
-        else {
-            Game.spawns.Spawn1.createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'harvester', source: 0})
-        }
+    if (numberOfRepirers<1)
+    {
+        Game.spawns.Spawn1.createCreep([WORK,MOVE,CARRY], undefined, {role:'repairer'});
     }
 
 };
