@@ -1,54 +1,43 @@
 var roleUpgrader = {
 
-    run: function (creep)
-    {
+    run: function (creep) {
 
         var srcs = creep.room.find(FIND_SOURCES_ACTIVE);
-        if(srcs.length>0) {
+        if (srcs.length > 0) {
             var sourcePosX = srcs[0].pos.x;
             var sourcePosY = srcs[0].pos.y;
-            if (srcs.length>1)
-            {
-                var sourceBPosX=srcs[1].pos.x;
-                var sourceBPosY=srcs[1].pos.y;
+            var creepsAtA = creep.room.lookForAtArea(LOOK_CREEPS, sourcePosY - 1, sourcePosX - 1, sourcePosY + 1, sourcePosX + 1, true);
+            if (srcs.length > 1) {
+                var sourceBPosX = srcs[1].pos.x;
+                var sourceBPosY = srcs[1].pos.y;
+                var creepsAtB = creep.room.lookForAtArea(LOOK_CREEPS, sourceBPosY - 1, sourceBPosX - 1, sourceBPosY + 1, sourceBPosX + 1, true);
             }
 
         }
 
-        //var creepsAtA =creep.room.lookForAtArea(LOOK_CREEPS,43,37,45,39,true);
-        var creepsAtA =creep.room.lookForAtArea(LOOK_CREEPS,sourcePosY-1,sourcePosX-1,sourcePosY+1,sourcePosX+1,true);
-        //var creepsAtB = creep.room.lookForAtArea(LOOK_CREEPS,44,23,46,25,true);
-        var creepsAtB =creep.room.lookForAtArea(LOOK_CREEPS,sourceBPosY-1,sourceBPosX-1,sourceBPosY+1,sourceBPosX+1,true);
-       if (creep.memory.upgrading==true && creep.carry.energy==0)
-       {
-           creep.memory.upgrading = false;
-           if (creep.memory.source== -1)
-           {
-               if (creepsAtA>creepsAtB)
-               {
-                   creep.memory.source=1;
-               }
-               else
-               {
-                   creep.memory.source=0;
-               }
-           }
+        if (creep.memory.upgrading == true && creep.carry.energy == 0) {
+            creep.memory.upgrading = false;
+            if (creep.memory.source == -1) {
+                if (creepsAtA > creepsAtB) {
+                    creep.memory.source = 1;
+                }
+                else {
+                    creep.memory.source = 0;
+                }
+            }
 
-       }
-        if (creep.memory.upgrading ==false && creep.carry.energy == creep.carryCapacity)
-        {
+        }
+        if (creep.memory.upgrading == false && creep.carry.energy == creep.carryCapacity) {
             creep.memory.upgrading = true;
-            creep.memory.source=-1;
+            creep.memory.source = -1;
         }
 
-        if (creep.memory.upgrading==false&&creep.memory.source==-1)
-        {
-            creep.memory.upgrading=true;
+        if (creep.memory.upgrading == false && creep.memory.source == -1) {
+            creep.memory.upgrading = true;
         }
 
-        if(creep.memory.upgrading){
-            if(creep.upgradeController(creep.room.controller)==ERR_NOT_IN_RANGE)
-            {
+        if (creep.memory.upgrading) {
+            if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(creep.room.controller);
 
             }
@@ -58,32 +47,27 @@ var roleUpgrader = {
             var sources = creep.room.find(FIND_SOURCES);
 
 
-
             //experimental code
             var targets = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||
-                        structure.structureType == STRUCTURE_SPAWN) && structure.energy >0;
+                        structure.structureType == STRUCTURE_SPAWN) && structure.energy > 0;
                 }
             });
 
 
-            if (targets.length>0)
-            {
-                var max=0;
+            if (targets.length > 0) {
+                var max = 0;
                 var use;
-                for(var i in targets)
-                {
+                for (var i in targets) {
 
-                    if (targets[i].energy>max)
-                    {
-                        max=targets[i].energy;
+                    if (targets[i].energy > max) {
+                        max = targets[i].energy;
                         use = targets[i];
                     }
 
                 }
-                if (use.transferEnergy(creep,use.energy)==ERR_NOT_IN_RANGE)
-                {
+                if (use.transferEnergy(creep, use.energy) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(use);
                 }
             }
