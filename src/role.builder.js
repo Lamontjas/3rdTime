@@ -42,6 +42,10 @@ var roleBuilder = {
                     creep.moveTo(targets);
                 }
             }
+            else
+            {
+                creep.moveTo(Game.flags.builders.pos);
+            }
 
         }
         else {
